@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     tags:
-      - "*"
+      - "v*.*.*"
   workflow_dispatch:
 
 env:
@@ -113,7 +113,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "*.ipk"
-          tag: v1.0.0 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
