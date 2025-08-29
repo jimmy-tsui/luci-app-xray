@@ -19,8 +19,8 @@ jobs:
       matrix:
         include:
           - arch: mips_24kc
-            sdk_url_path: https://downloads.openwrt.org/releases/24.10.2/targets/ath79/generic
-            sdk_name: -sdk-24.10.2-ath79-generic_
+            sdk_url_path: https://downloads.openwrt.org/releases/22.03.4/targets/ath79/generic
+            sdk_name: -sdk-22.03.4-ath79-generic_
 
     env:
       SDK_URL_PATH: ${{ matrix.sdk_url_path }}
