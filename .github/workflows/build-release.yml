@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "*"
   workflow_dispatch:
 
 env:
@@ -18,9 +18,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - arch: mips_24kc
-            sdk_url_path: https://downloads.openwrt.org/releases/22.03.4/targets/ath79/generic
-            sdk_name: -sdk-22.03.4-ath79-generic_
+          - arch: aarch64_cortex-a53
+            sdk_url_path: https://downloads.openwrt.org/releases/21.02.3/targets/mediatek/mt7622
+            sdk_name: -sdk-21.02.3-mediatek-mt7622_
 
     env:
       SDK_URL_PATH: ${{ matrix.sdk_url_path }}
@@ -46,7 +46,7 @@ jobs:
             openwrt-${{ matrix.arch }}-${{ env.PACKAGE_NAME }}-
       - name: Install Dependencies
         run: |
-          DEBIAN_FRONTEND=noninteractive sudo apt-get install -y ccache gettext libncurses5-dev xsltproc p7zip-full zstd
+          DEBIAN_FRONTEND=noninteractive sudo apt-get install -y ccache gettext libncurses5-dev xsltproc p7zip-full
       - name: Create Directories
         run: |
           CACHE_DIR_SDK="$(eval echo "$CACHE_DIR/sdk")"
